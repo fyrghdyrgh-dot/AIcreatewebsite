@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具导航 - 发现优质人工智能工具</title>
+    <!-- 引入Tailwind CSS（无需本地安装） -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',       // 主背景色
+                        darker: '#0a0a0a',     // 最深背景
+                        card: '#1e1e1e',       // 卡片背景
+                        primary: '#00e5ff',    // 主色调（科技蓝）
+                        secondary: '#8b5cf6'  // 辅助色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 min-h-screen flex flex-col">
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 bg-darker border-b border-gray-800 px-4 py-3 md:px-8">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <!-- 网站Logo & 标题 -->
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-brain text-primary text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold text-white">AI工具导航</h1>
+            </div>
+
+            <!-- 搜索框 -->
+            <div class="w-full md:w-1/3 relative">
+                <input 
+                    id="searchInput"
+                    type="text" 
+                    placeholder="搜索AI工具..." 
+                    class="w-full bg-card px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:border-primary pl-10"
+                >
+                <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 顶部通栏广告位 → 可替换为你的广告代码/图片 -->
+    <div class="container mx-auto px-4 py-3">
+        <div class="w-full bg-card rounded-lg p-4 text-center border border-gray-700">
+            <p class="text-gray-400 text-sm"><i class="fa-solid fa-ad text-primary mr-1"></i> 顶部通栏广告位 | 可替换为广告联盟代码</p>
+        </div>
+    </div>
+
+    <!-- 分类导航栏 -->
+    <nav class="px-4 py-2">
+        <div class="container mx-auto">
+            <div class="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
+                <button class="category-btn active bg-primary text-dark px-4 py-1 rounded-full text-sm font-medium" data-category="all">全部</button>
+                <button class="category-btn bg-card px-4 py-1 rounded-full text-sm font-medium hover:bg-primary/20" data-category="chat">智能对话</button>
+                <button class="category-btn bg-card px-4 py-1 rounded-full text-sm font-medium hover:bg-primary/20" data-category="image">图像生成</button>
+                <button class="category-btn bg-card px-4 py-1 rounded-full text-sm font-medium hover:bg-primary/20" data-category="video">音视频</button>
+                <button class="category-btn bg-card px-4 py-1 rounded-full text-sm font-medium hover:bg-primary/20" data-category="code">代码开发</button>
+                <button class="category-btn bg-card px-4 py-1 rounded-full text-sm font-medium hover:bg-primary/20" data-category="office">办公效率</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="flex-1 container mx-auto px-4 py-6">
+        <!-- 工具卡片网格 -->
+        <div id="toolGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+            <!-- 智能对话类 -->
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="chat">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">ChatGPT</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">全球领先的AI对话助手，支持问答、创作、编程</p>
+                <a href="https://chat.openai.com" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="chat">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Claude</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Anthropic旗下AI，支持长文本处理</p>
+                <a href="https://claude.ai" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <!-- 图像生成类 -->
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="image">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-500">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Midjourney</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">顶级AI绘画工具，生成高质量艺术作品</p>
+                <a href="https://www.midjourney.com" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="image">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center text-green-500">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Stable Diffusion</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">开源AI图像生成，本地部署免费使用</p>
+                <a href="https://stablediffusionweb.com" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <!-- 音视频类 -->
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="video">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-500">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Sora</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">OpenAI文本生成视频工具</p>
+                <a href="https://openai.com/sora" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <!-- 代码开发类 -->
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="code">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-500">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">GitHub Copilot</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">AI代码助手，自动补全编写代码</p>
+                <a href="https://github.com/copilot" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <!-- 办公效率类 -->
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="office">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-500">
+                        <i class="fa-solid fa-file-text"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">WPS AI</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">智能办公，文档总结、PPT生成</p>
+                <a href="https://ai.wps.cn" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="tool-card bg-card rounded-xl p-4 border border-gray-800 card-hover" data-category="office">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-500">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">讯飞听见</h3>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">AI语音转文字，会议纪要神器</p>
+                <a href="https://www.iflyrecall.com" target="_blank" class="text-primary text-sm hover:underline">立即访问 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+
+        <!-- 中间横幅广告位 → 可替换为你的广告 -->
+        <div class="w-full bg-card rounded-lg p-6 my-6 text-center border border-gray-700">
+            <p class="text-gray-400"><i class="fa-solid fa-ad text-primary mr-2"></i> 中间横幅广告位 | 支持图片/文字/联盟广告</p>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-darker border-t border-gray-800 py-4 px-4">
+        <div class="container mx-auto text-center text-gray-500 text-sm">
+            <p>© 2025 AI工具导航 - 极简深色版 | 所有工具版权归原作者所有</p>
+        </div>
+    </footer>
+
+    <!-- 核心JS：分类切换 + 搜索功能 -->
+    <script>
+        // 获取元素
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const searchInput = document.getElementById('searchInput');
+
+        // 分类切换功能
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 切换按钮样式
+                categoryBtns.forEach(b => b.classList.remove('active', 'bg-primary', 'text-dark'));
+                btn.classList.add('active', 'bg-primary', 'text-dark');
+                
+                const category = btn.dataset.category;
+                // 筛选卡片
+                toolCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 搜索筛选功能
+        searchInput.addEventListener('input', (e) => {
+            const searchText = e.target.value.toLowerCase();
+            toolCards.forEach(card => {
+                const toolName = card.querySelector('h3').textContent.toLowerCase();
+                const toolDesc = card.querySelector('p').textContent.toLowerCase();
+                
+                if (toolName.includes(searchText) || toolDesc.includes(searchText)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
